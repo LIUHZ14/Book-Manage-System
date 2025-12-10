@@ -1,105 +1,156 @@
 package BookManageSystem;
 
-public class BookManager {// Defines a public class named BookManager to manage books in the library system
-    Book[] books = new Book[1000];// An array to store up to 1000 books
-    BookNum[] bookNumbers = new BookNum[1000];// An array to store the number of books in each book
+public class BookManager {
+    private Book[] books = new Book[1000];
+    private BookNum[] bookNumbers = new BookNum[1000];
+    private int bookCount = 0;
 
-    public void init() {// Initializes the library with two books
-        Book b1 = new Book();// Creates a new Book object
-        BookNum n1 = new BookNum();// Creates a new BookNum object
-        b1.bookname = "Ateler'sCorner";// Sets the name of the book
-        b1.bookAuthor = "JuanLi";// Sets the author of the book
-        b1.bookPrice = 45;// Sets the price of the book
-        n1.bookTotalNum = 1;// Sets the total number of books
+    public void init() {
+        Book b1 = new Book();
+        BookNum n1 = new BookNum();
+        b1.setBookname("Ateler'sCorner");
+        b1.setBookAuthor("JuanLi");
+        b1.setBookPrice(45);
+        n1.setBookTotalNum(1);
 
-        Book b2 = new Book();// Creates a new Book object
-        BookNum n2 = new BookNum();// Creates a new BookNum object
-        b2.bookname = "TheOrdinaryWorld";// Sets the name of the book
-        b2.bookAuthor = "YaoLu";// Sets the author of the book
-        b2.bookPrice = 55;// Sets the price of the book
-        n2.bookTotalNum = 1;// Sets the total number of books
+        Book b2 = new Book();
+        BookNum n2 = new BookNum();
+        b2.setBookname("TheOrdinaryWorld");
+        b2.setBookAuthor("YaoLu");
+        b2.setBookPrice(55);
+        n2.setBookTotalNum(1);
 
-        books[0] = b1;// Adds the first book to the library
-        books[1] = b2;// Adds the second book to the library
-        bookNumbers[0] = n1;// Adds the first book's number of copies to the library
-        bookNumbers[1] = n2;// Adds the second book's number of copies to the library
+        books[0] = b1;
+        books[1] = b2;
+        bookNumbers[0] = n1;
+        bookNumbers[1] = n2;
+        bookCount = 2;
     }
 
-    public void list() {// Displays the list of books in the library
-        System.out.println("This is the title of the book list");// Displays the title of the book list
-        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");// Displays the title of the book list
-        for (int i = 0; i <= books.length - 1; i++) {// Loops through each book in the library
-            if (books[i] != null && bookNumbers[i] != null) {// Checks if the book is not null
-                System.out.println(books[i].bookname + "\t\t" + books[i].bookAuthor + "\t\t"
-                        + books[i].bookPrice + "\t\t" + bookNumbers[i].bookTotalNum);// Displays the details of the book
-            }
-        }
-    }
+    public void list() {
+        System.out.println("This is the title of the book list");
+        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");
 
-    public void addBook(Book book, BookNum bookNum) {//Referencing function.
-        boolean flag=true;//set the flag
-        for (int i=0; i < books.length - 1; i++) {//the cycle index
-            if(books[i]!=null){//judge whether the book is not null
-                if (books[i].bookAuthor.equals(book.bookAuthor) && books[i].bookname.equals(book.bookname)
-                        && books[i].bookPrice == book.bookPrice) {//judgement condition
-                    bookNumbers[i] = bookNum;//write out the conclusion
-                    flag = false;//the result is judged as false
-                    break;//interrupt the routine
-                }
-            }
-        }
-        if (flag){//if the flag is false,break
-            for (int j = 0; j < books.length - 1; j++) {//the cycle index
-                if (books[j] == null) {//judge whether the books is null
-                    books[j] = book;//turn the books into book
-                    bookNumbers[j]= bookNum;//turn the bookNumbers into bookNum
-                    break;//interrupt the routine
-                }
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i] != null && bookNumbers[i] != null) {
+                System.out.println(books[i].getBookname() + "\t\t" +
+                        books[i].getBookAuthor() + "\t\t" +
+                        books[i].getBookPrice() + "\t\t" +
+                        bookNumbers[i].getBookTotalNum());
             }
         }
     }
-    public void bookSeekName(Book book){//Referencing function
-        boolean flag=true;//set the flag
-        for (int i=0; i < books.length - 1; i++) {//the cycle index
-            if(books[i]!=null){//judge whether the books is not null
-                if (books[i].bookname.equals(book.bookname)) {//judge whether the bookname is equal to the right bookname
-                    System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");//print out the data
-                    System.out.println(books[i].bookname + "\t\t" + books[i].bookAuthor + "\t\t"
-                            + books[i].bookPrice + "\t\t" + bookNumbers[i].bookTotalNum);//print out the book data
-                    flag = false;//turn the flag into false
-                    break;//interrupt the routine
+
+    public void addBook(Book book, BookNum bookNum) {
+        if (bookCount >= books.length) {
+            System.out.println("Warning:Book quantity cannot be negative");
+            return;
+        }
+
+        boolean flag = true;
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i] != null) {
+                if (books[i].getBookAuthor().equals(book.getBookAuthor()) &&
+                        books[i].getBookname().equals(book.getBookname()) &&
+                        books[i].getBookPrice() == book.getBookPrice()) {
+
+                    int currentNum = bookNumbers[i].getBookTotalNum();
+                    int newNum = bookNum.getBookTotalNum();
+                    bookNumbers[i].setBookTotalNum(currentNum + newNum);
+                    System.out.println("The same book already exists,and the inventory");
+                    flag = false;
+                    break;
                 }
             }
         }
-        if (flag){//judgement
-            for (int j = 0; j < books.length - 1; j++) {//the cycle index
-                if (books[j] == null) {//judge whether the books is null
-                    System.out.println("null");//print out null
-                    break;//interrupt the routine
-                }
-            }
+
+        if (flag) {
+            books[bookCount] = book;
+            bookNumbers[bookCount] = bookNum;
+            bookCount++;
+            System.out.println("Book added successfully!");
         }
     }
-    public void bookSeekAuthor(Book book){//Referencing function
-        boolean flag=true;//set the flag
-        for (int i=0; i < books.length - 1; i++) {//the cycle index
-            if(books[i]!=null){//judge whether the books is not null
-                if (books[i].bookAuthor.equals(book.bookAuthor)) {//judgement
-                    System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");//print out the data
-                    System.out.println(books[i].bookname + "\t\t" + books[i].bookAuthor + "\t\t"
-                            + books[i].bookPrice + "\t\t" + bookNumbers[i].bookTotalNum);//print out the book data
-                    flag = false;//turn the flag into false
-                    break;//interrupt the routine
-                }
+
+    public void bookSeekName(Book book) {
+        boolean flag = false;
+        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i] != null &&
+                    books[i].getBookname().equalsIgnoreCase(book.getBookname())) {
+
+                System.out.println(books[i].getBookname() + "\t\t" + books[i].getBookAuthor() + "\t\t" +
+                        books[i].getBookPrice() + "\t\t" + bookNumbers[i].getBookTotalNum());
+                flag = true;
             }
         }
-        if (flag){//judgement
-            for (int j = 0; j < books.length - 1; j++) {//the cycle index
-                if (books[j] == null) {//judge whether the books is null
-                    System.out.println("null");//print out null
-                    break;//interrupt the routine
-                }
+
+        if (!flag) {
+            System.out.println("No relevant books found!");
+        }
+    }
+
+    public void bookSeekAuthor(Book book) {
+        boolean flag = false;
+        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i] != null &&
+                    books[i].getBookAuthor().equalsIgnoreCase(book.getBookAuthor())) {
+
+                System.out.println(books[i].getBookname() + "\t\t" + books[i].getBookAuthor() + "\t\t" +
+                        books[i].getBookPrice() + "\t\t" + bookNumbers[i].getBookTotalNum());
+                flag = true;
             }
         }
+
+        if (!flag) {
+            System.out.println("No relevant authors found");
+        }
+    }
+
+    public void fuzzySearchByName(String keyword) {
+        System.out.println("Fuzzy search results sorted by book title");
+        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");
+        boolean flag = false;
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i] != null &&
+                    books[i].getBookname().toLowerCase().contains(keyword.toLowerCase())) {
+
+                System.out.println(books[i].getBookname() + "\t\t" + books[i].getBookAuthor() + "\t\t" +
+                        books[i].getBookPrice() + "\t\t" + bookNumbers[i].getBookTotalNum());
+                flag = true;
+            }
+        }
+
+        if (!flag) {
+            System.out.println("No books containing \"" + keyword + "\" were found");
+        }
+    }
+
+    public void fuzzySearchByAuthor(String keyword) {
+        System.out.println("Fuzzy search results sorted by book author");
+        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");
+        boolean flag = false;
+
+        for (int i = 0; i < bookCount; i++) {
+            if (books[i] != null &&
+                    books[i].getBookAuthor().toLowerCase().contains(keyword.toLowerCase())) {
+
+                System.out.println(books[i].getBookname() + "\t\t" + books[i].getBookAuthor() + "\t\t" +
+                        books[i].getBookPrice() + "\t\t" + bookNumbers[i].getBookTotalNum());
+                flag = true;
+            }
+        }
+
+        if (!flag) {
+            System.out.println("No author containing \"" + keyword + "\" were found");
+        }
+    }
+
+    public int getBookCount() {
+        return bookCount;
     }
 }

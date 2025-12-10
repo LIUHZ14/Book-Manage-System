@@ -1,5 +1,17 @@
 package BookManageSystem;
 
-public class BookNum {// Defines a public class named BookNum to store the number of books in each book
-    int bookTotalNum=0;// Instance variable to store the total number of books
+public class BookNum {
+    private int bookTotalNum = 0;
+
+    public int getBookTotalNum() {
+        return bookTotalNum;
+    }
+
+    public void setBookTotalNum(int bookTotalNum) {
+        if (bookTotalNum >= 0) {
+            this.bookTotalNum = bookTotalNum;
+        } else {
+            System.out.println("Warning:Book quantity cannot be negative");
+        }
+    }
 }
