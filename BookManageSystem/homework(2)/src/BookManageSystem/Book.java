@@ -1,9 +1,9 @@
 package BookManageSystem;
 
 public class Book {
-    private String bookname;      // 改为私有变量
-    private String bookAuthor;    // 改为私有变量
-    private int bookPrice;        // 改为私有变量
+    private String bookname;
+    private String bookAuthor;
+    private int bookPrice;
 
     public String getBookname() {
         return bookname;
@@ -22,7 +22,7 @@ public class Book {
     }// aquire getter
 
     public void setBookAuthor(String bookAuthor) {// [New] Automated Check: Book author cannot be empty
-        if (bookAuthor != null && !bookAuthor.trim().isEmpty()) {  // [新增] 自动化检测：作者不能为空
+        if (bookAuthor != null && !bookAuthor.trim().isEmpty()) {//Check if the author is empty
             this.bookAuthor = bookAuthor;//set book author
         } else {//judgement
             System.out.println("Warning:Book Author is empty");//print warning
@@ -40,4 +40,5 @@ public class Book {
             System.out.println("Warning:Book quantity cannot be negative");//print warning
         }
     }
+
 }
