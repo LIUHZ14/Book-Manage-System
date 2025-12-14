@@ -3,13 +3,11 @@ package BookManageSystem;
 import java.util.Scanner;
 
                 public class Main {
-                    public static void menu() {// menu
+                    private static void menu() {// menu
                         System.out.println("Welcome to the Library Management System");//print welcome
                         System.out.println("1、the list of books(图书列表)");//print menu
                         System.out.println("2、add book(添加图书)");//print book addition
-                        System.out.println("3、book name query(按书名查询)");//print book query
-                        System.out.println("4、author query(按作者查询)");//print author query
-                        System.out.println("5、fuzzy search(模糊搜索)");//print fuzzy search
+                        System.out.println("3、fuzzy search(模糊搜索)");//print fuzzy search
                         System.out.println("0、close the System");//print close
                         System.out.println("please input the operation that the user want to do");//print input
                     }
@@ -50,26 +48,7 @@ import java.util.Scanner;
                                 manager.addBook(book, bookNum);// add book
                                 menu();// menu method
                                 num =getInt(input);// input
-
-                            } else if (num == 3) {// if num == 3
-                                Book book = new Book();// create Book object
-                                System.out.println("input book name");//print book name
-                                String name = input.next();// input
-                                book.setBookname(name);// set book name
-                                manager.bookSeekName(book);// book seek name
-                                menu();// menu method
-                                num =getInt(input);// input
-
-                            } else if (num == 4) {// if num == 4
-                                Book book = new Book();// create Book object
-                                System.out.println("input author name");//print author name
-                                String author = input.next();// input
-                                book.setBookAuthor(author);// set book author
-                                manager.bookSeekAuthor(book);// book seek author
-                                menu();// menu method
-                                num =getInt(input);// input
-
-                            } else if (num == 5) {// if num == 5
+                            } else if (num == 3) {// if num == 5
                                 System.out.println("1、Fuzzy search by book name");//print fuzzy search
                                 System.out.println("2、Fuzzy search by author name");//print fuzzy search
                                 System.out.println("Please choose search type:");//print search type

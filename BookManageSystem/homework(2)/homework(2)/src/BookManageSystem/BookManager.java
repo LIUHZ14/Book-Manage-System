@@ -71,45 +71,6 @@ public class BookManager {//book manage system
             System.out.println("Book added successfully!");//print success
         }
     }
-
-    public void bookSeekName(Book book) {//book seek by name
-        boolean flag = false;// flag
-        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");//print book list title
-
-        for (int i = 0; i < bookCount; i++) {// cycle
-            if (books[i] != null &&// judgement
-                    books[i].getBookname().equalsIgnoreCase(book.getBookname())) {// judgement
-
-                System.out.println(books[i].getBookname() + "\t\t" + books[i].getBookAuthor() + "\t\t" +
-                        books[i].getBookPrice() + "\t\t" + bookNumbers[i].getBookTotalNum());//print book list
-                flag = true;// flag
-            }
-        }
-
-        if (!flag) {// judgement
-            System.out.println("No relevant books found!");//print warning
-        }
-    }
-
-    public void bookSeekAuthor(Book book) {//book seek by author
-        boolean flag = false;// flag
-        System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");//print book list title
-
-        for (int i = 0; i < bookCount; i++) {// cycle
-            if (books[i] != null &&// judgement
-                    books[i].getBookAuthor().equalsIgnoreCase(book.getBookAuthor())) {// judgement
-
-                System.out.println(books[i].getBookname() + "\t\t" + books[i].getBookAuthor() + "\t\t" +
-                        books[i].getBookPrice() + "\t\t" + bookNumbers[i].getBookTotalNum());//print book list
-                flag = true;// flag
-            }
-        }
-
-        if (!flag) {// judgement
-            System.out.println("No relevant authors found");//print warning
-        }
-    }
-
     public void fuzzySearchByName(String keyword) {//book seek by name
         System.out.println("Fuzzy search results sorted by book title");//print book list title
         System.out.println("name\t\t\t\tauthor\t\tprice\t\tremaining quantity");//print book list title
