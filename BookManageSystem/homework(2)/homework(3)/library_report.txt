@@ -1,0 +1,26 @@
+==========================================
+         LIBRARY MANAGEMENT SYSTEM REPORT
+==========================================
+
+Generated on: Mon Dec 15 20:45:40 CST 2025
+
+--- BOOKS INVENTORY ---
+ID         | Title                     | Author          | Price  | Category   | Publish Date | Inventory
+----------------------------------------------------------------------------------------------------
+BK2640     | Ateler's Corner           | Juan Li         | 45     | Fiction    | 2020-01-15 | Total: 5 | Borrowed: 0 | Available: 5
+BK2642     | The Ordinary World        | Yao Lu          | 55     | Fiction    | 2015-03-20 | Total: 3 | Borrowed: 0 | Available: 3
+BK2642     | Java Programming          | John Doe        | 85     | Technology | 2023-05-10 | Total: 8 | Borrowed: 0 | Available: 8
+BK2642     | Data Science Basics       | Jane Smith      | 75     | Science    | 2022-08-15 | Total: 6 | Borrowed: 0 | Available: 6
+BK4226     | Harry Potter              | J.K. Rowling    | 60     | fiction    | 1997-6-26  | Total: 10 | Borrowed: 0 | Available: 10
+
+--- BORROWERS ---
+ID         | Name                 | Phone           | Email                     | Books Borrowed
+------------------------------------------------------------------------------------------
+BR001      | Alice Johnson        | 1234567890      | alice@email.com           | Borrowed: 0
+BR002      | Bob Smith            | 9876543210      | bob@email.com             | Borrowed: 0
+
+--- STATISTICS ---
+Total Books: 5
+Total Categories: 4
+Total Borrowers: 2
+==========================================
