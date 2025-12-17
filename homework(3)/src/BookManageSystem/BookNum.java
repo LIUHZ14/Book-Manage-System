@@ -1,4 +1,3 @@
-// File: BookNum.java
 package BookManageSystem;
 
 import java.io.Serializable;
@@ -75,4 +74,5 @@ public class BookNum implements Serializable {//Serialization version ID for com
         return String.format("Total: %d | Borrowed: %d | Available: %d",
                 bookTotalNum, bookBorrowedNum, getAvailableNum());//Return a string representation of the book
     }
+
 }
