@@ -1,4 +1,3 @@
-// File: Main.java
 package BookManageSystem;
 
 import java.util.Scanner;
@@ -334,4 +333,5 @@ public class Main {//Share instances used throughout the application
         System.out.println("Report File: " + BookManager.YELLOW + "library_report.txt" + BookManager.RESET);
         System.out.println(BookManager.CYAN + "-".repeat(40) + BookManager.RESET);
     }
+
 }
