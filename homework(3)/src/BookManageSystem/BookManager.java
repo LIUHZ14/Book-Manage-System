@@ -1,4 +1,3 @@
-// File: BookManager.java
 package BookManageSystem;
 
 import java.io.*;
@@ -366,4 +365,5 @@ public class BookManager {
     public int getCategoryCount() {
         return categoryCount;
     }//Get total number of categories
+
 }
