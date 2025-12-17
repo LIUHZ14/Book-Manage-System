@@ -1,4 +1,3 @@
-// File: LibraryData.java
 package BookManageSystem;
 
 import java.io.Serializable;
@@ -39,3 +38,4 @@ class LibraryData implements Serializable {
     public int getCategoryCount() { return categoryCount; }
     public int getBorrowerCount() { return borrowerCount; }
 }
+

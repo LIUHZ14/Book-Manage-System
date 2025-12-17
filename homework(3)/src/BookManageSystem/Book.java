@@ -1,4 +1,3 @@
-// File: Book.java
 package BookManageSystem;
 
 import java.io.Serializable;
@@ -90,4 +89,5 @@ public class Book implements Serializable {// Serialization version identifier t
         return String.format("%-10s | %-25s | %-15s | %-6d | %-10s | %-10s",
                 bookId, bookname, bookAuthor, bookPrice, category, publishDate);//Return a string representation of the book
     }
+
 }
