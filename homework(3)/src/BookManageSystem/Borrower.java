@@ -1,4 +1,3 @@
-// File: Borrower.java
 package BookManageSystem;
 
 import java.io.Serializable;
@@ -63,4 +62,5 @@ public class Borrower implements Serializable {
         return String.format("%-10s | %-20s | %-15s | %-25s | Borrowed: %d",
                 borrowerId, name, phone, email, borrowedBooks.size());//Return a string representation of the borrower
     }
+
 }
